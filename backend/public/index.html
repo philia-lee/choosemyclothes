@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"> <!-- 모니터 크기에 따른 웹페이지의 크기-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> <!-- edge 표준모드-->
+    <!-- HTLM5shiv ie6~8 -->
+    <!--[if lt IE 9]> 
+      <script src="assets/js/html5shiv.min.js"></script>
+      <script type="text/javascript">
+         alert("현재 브라우저는 지원하지 않습니다. 크롬 브라우저를 추천합니다.!");
+      </script>
+   <![endif]-->
+    <title>옷좀골라줄래</title>
+    <!-- 스타일 시트-->
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/swiper.min.css">
+
+    
+    <!-- vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+    <!-- IE -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script> 
+
+</head>
+
+<body>
+    <div id='vue'> </div>
+
+    <div class="overlay">
+
+    </div>
+    <header id="header">
+        <div class="container">
+            <div class="row">
+                <div class="header clearfix">
+                    <h1>
+                        <span id="sidebarCollapse">
+                            <img src="assets/img/btn_category.png" alt="카테고리">
+                        </span>
+                        <em class="logo">
+                            <a href=#>
+                                <strong>옷 좀 골라줄래?</strong>
+                                <em>
+                                    Can you pick some clothes?
+                                </em>
+
+                            </a>
+                        </em>
+                    </h1>
+                    <div class="login" id="login">
+                        <a href="./login/index.html">로그인</a>
+                        <a href="#">회원가입</a>
+                    </div>
+                    <div class="login_after login_session" id="login_session">
+                        <ul>
+                            <li id='hellonick'>?? 환영합니다</li>
+                            <li><a href="#">정보수정</a></li>
+                            <li><a href="#" onclick="logout()">로그아웃</a></li>
+                        </ul>
+                    </div>
+                    <div class="search" id="sc">
+                        <input class="search__input" type="text" placeholder="Search">
+                        <input class="search__btn" type="button">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="sidebar" class="sidenav">
+            <a class="closebtn">&times;</a>
+            <a href="#">코디 Photo</a>
+            <a href="#">이상형 월드컵</a>
+            <a href="#">코디 추천</a>
+            <div class="login_session" id='logprofile'><a href="#">프로필</a></div>
+            <a href="#">Contact</a>
+        </div>
+    </header>
+    <section id="banner">
+        <div class="container">
+            <div class="row">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="assets/img/banner.png"></div>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="new">
+        <div class="container">
+            <div class="row">
+                <div class="sub_title">
+                    <h1>NEW</h1>
+                    <em><a href="#">더보기 ></a></em>
+                </div>
+                <div class="photo clearfix">
+                    <ul>
+                        <li class="item">
+                            <img src="assets/img/noimage.jpg">
+                        </li>
+                        <li class="item">
+                            <img src="assets/img/noimage.jpg">
+                        </li>
+                        <li class="item">
+                            <img src="assets/img/%ED%95%AB%ED%95%91%ED%81%AC%EC%BD%94%EB%94%9411.jpg">
+                        </li>
+                        <li class="item">
+                            <img src="assets/img/%ED%95%AB%ED%95%91%ED%81%AC%EC%BD%94%EB%94%9411.jpg">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="choice">
+        <div class="container">
+            <div class="row">
+                <div class="sub_title">
+                    <h1>Choice</h1>
+                    <em><a href="#">더보기 ></a></em>
+                </div>
+                <div class="photo clearfix">
+                    <ul>
+                        <li class="item1">
+                            <a href="#"><img src="assets/img/noimage.jpg"></a>
+                        </li>
+                        <li class="item1">
+                            <a href="#"><img src="assets/img/noimage.jpg"></a>
+                        </li>
+                        <li class="item1">
+                            <a href="#"><img src="assets/img/noimage.jpg"></a>
+                        </li>
+                        <li class="item1">
+                            <a href="#"><img src="assets/img/noimage.jpg"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <aside id="modal" class="modal">
+        <a id="hideview" class="closebtn">&times;</a>
+        <div class="infor clearfix">
+            <div class="img">
+                <img src="#">
+                <em class="name">
+                    <a href="#">
+                        <strong>
+                            Banana
+                        </strong>
+                        <em>
+                            (IwantNS@Gmail.com)
+                        </em>
+                    </a>
+                </em>
+
+            </div>
+
+            <div class="tag">
+                <img src="assets/img/tag.jpg">
+                <div class="tag_infor">
+                    <em>상의 여름 나들이 진갈색</em>
+                </div>
+            </div>
+            <div class="btn report"><em>신고</em></div>
+            <div class="btn erase"><em>삭제</em></div>
+            <div class="btn rewrite"><em>수정</em></div>
+        </div>
+    </aside>
+    <footer id="footer">
+        <div id="footer_infor">
+            <div class="container">
+                <div class="row">
+                    <div class="footer_infor">
+                        <ul>
+                            <li><a href="#">홈페이지 이용약관</a></li>
+                            <li><a href="#">개인정보 취급방침</a></li>
+                            <li><a href="#">게시물 게재일칙</a></li>
+                        </ul>
+                        <p></p>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- 자바스크립트 라이브러리 -->
+    <script src="assets/js/jquery.min_1.12.4.js"></script>
+    <script src="assets/js/modernizr-custom.js"></script>
+    <script src="assets/js/swiper.min.js"></script>
+    <script src="assets/js/ie-checker.js"></script>
+    <script src="assets/js/viewer.js"></script>
+    <!-- 자바스크립트 코드-->
+    <script>
+        /*네비게이션 */
+        $('#sidebarCollapse').on('click', function() {
+            $('#sidebar').addClass('active');
+            $('.overlay').fadeIn();
+        });
+        $('.overlay').on('click', function() {
+            $('#sidebar').removeClass('active');
+            $('.overlay').fadeOut();
+        });
+        $('.closebtn').on('click', function() {
+            $('#sidebar').removeClass('active');
+            $('.overlay').fadeOut();
+        });
+        /*배너 이미지 슬라이드*/
+        var swiper = new Swiper('.swiper-container', {
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'fraction',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: {
+                delay: 5000,
+            }
+        });
+
+
+/*
+function isLogin() {
+    let xhr = new XMLHttpRequest();
+
+    xhr.open('POST', 'http://121.1.71.52:3000/login/check');
+    xhr.setRequestHeader('Content-type', "application/json");
+    xhr.send();
+
+    xhr.onerror = function() {
+        console.log('err!');
+    };
+
+    xhr.addEventListener('error', function() {
+        console.log('err');
+    })
+
+    xhr.addEventListener('load', function() {
+        console.log(xhr.response);
+
+        if(xhr.response === 0) {
+            let login = document.getElementById('login');
+            login.style.display = 'block';
+
+            let login_session = document.getElementById('login_session');
+            login_session.style.display = 'none';
+
+            let profile = document.getElementById('logprofile');
+            profile.style.display = 'none';
+
+            window.location.reload()
+        }
+
+        let data = JSON.parse(xhr.response);
+
+        if(data.nick_name != undefined) {
+            document.getElementById('hellonick').innerText = data.nick_name + ' 님 환영합니다'
+
+            let login = document.getElementById('login');
+            login.style.display = 'none';
+
+            let login_session = document.getElementById('login_session');
+            login_session.style.display = 'block';
+
+            let profile = document.getElementById('logprofile');
+            profile.style.display = 'block';
+        }
+    });   
+}
+
+*/
+
+function logout() {
+
+if(confirm('로그아웃 하시겠습니까?')) {
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.open('POST', 'http://121.1.71.52:3000/login/logout');
+    xhr.send();
+    xhr.addEventListener('load', function() {
+                console.log(xhr.response);
+    });
+
+
+    let login = document.getElementById('login');
+    login.style.display = 'block';
+
+    let login_session = document.getElementById('login_session');
+    login_session.style.display = 'none';
+
+    let profile = document.getElementById('logprofile');
+    profile.style.display = 'none';
+
+    window.location.reload()              
+  }  
+}
+
+
+
+
+//safari 브라우저 문제 해결..
+
+window.onpageshow = function(event) {
+    if(event.persisted == true) {
+        window.location.reload()
+    } else {}
+}
+
+
+</script>
+
+<script>
+    
+    let vue = new Vue({
+        el : "#vue",
+        mounted:function() {
+        this.onload();                
+        },
+        data : {
+
+        },
+        methods : {
+            onload : function() {
+                axios.post('http://121.1.71.52:3000/login/check').then(response => {
+                    console.log(response.data);
+                    if(response.data.nick_name != undefined) {
+                        document.getElementById('hellonick').innerText = response.data.nick_name + ' 님 환영합니다'
+
+                        let login = document.getElementById('login');
+                        login.style.display = 'none';
+
+                        let login_session = document.getElementById('login_session');
+                        login_session.style.display = 'block';
+
+                        let profile = document.getElementById('logprofile');
+                        profile.style.display = 'block';
+                    }
+                });
+            },
+        }
+    });
+    
+</script>
+</body></html>

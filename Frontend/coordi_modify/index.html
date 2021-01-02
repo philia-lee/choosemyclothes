@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"> <!-- 모니터 크기에 따른 웹페이지의 크기-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> <!-- edge 표준모드-->
+    <!-- HTLM5shiv ie6~8 -->
+    <!--[if lt IE 9]> 
+      <script src="assets/js/html5shiv.min.js"></script>
+      <script type="text/javascript">
+         alert("현재 브라우저는 지원하지 않습니다. 크롬 브라우저를 추천합니다.!");
+      </script>
+   <![endif]-->
+    <title>옷좀골라줄래</title>
+    <!-- 스타일 시트-->
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+</head>
+
+<body>
+    <div id='vue'></div>
+    <div class="overlay">
+
+    </div>
+    <header id="header">
+        <div class="container">
+            <div class="row">
+                <div class="header clearfix">
+                    <h1>
+                        <span id="sidebarCollapse">
+                            <img src="assets/img/btn_category.png" alt="카테고리">
+                        </span>
+                        <em class="logo">
+                            <a href='../'>
+                                <strong>옷 좀 골라줄래?</strong>
+                                <em>
+                                    Can you pick some clothes?
+                                </em>
+
+                            </a>
+                        </em>
+                    </h1>
+                    <div class="login" style="display:block" id="login">
+                        <a href="../login">로그인</a>
+                        <a href="../signup">회원가입</a>
+                    </div>
+                    <div class="login_after login_session" id="login_session">
+                        <ul>
+                            <li id='hellonick'>?? 환영합니다</li>
+                            <li><a href="../modify/">정보수정</a></li>
+                            <li><a href="#" onclick="logout()">로그아웃</a></li>
+                        </ul>
+                    </div>
+                    <div class="search" id="sc">
+                        <input class="search__input" type="text" placeholder="Search">
+                        <input class="search__btn" type="button">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="sidebar" class="sidenav">
+            <a class="closebtn">&times;</a>
+            <a href="../coordi/">코디 Photo</a>
+            <a href="../worldcup/">이상형 월드컵</a>
+            <a href="../recommend/">코디 추천</a>
+            <div class="login_session" id='logprofile'>
+                <a href="../upload/">코디 업로드</a>
+                <a id="href_profile">프로필</a></div>
+            <a href="../howto/">이용안내</a>
+
+            <a href="#">Contact</a>
+        </div>
+    </header>
+    <section id="banner">
+        <div class="container">
+            <div class="row">
+                <img src="assets/img/banner.png">
+            </div>
+        </div>
+    </section>
+    <section id="codi_upload">
+        <div class="container">
+            <div class="row">
+                <div class="codi_upload">
+                    <div class="sub_title">
+                        <h1>코디 수정</h1>
+                    </div>
+                    <div class="form clearfix">
+                        <form id="upload">
+                            <div class="upload">
+                                <div class="upload_preview">
+                                    <div class="upload_preview_infor">
+                                        <img src="" id="img_mod">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="selection">
+                                <br/>
+                                <div id= "select1" class="select">
+                                    <select class="kind">
+                                        <option value="">옷 분류</option>
+                                        <option value="top">상의</option>
+                                        <option value="outer">아우터</option>
+                                        <option value="onepiece">원피스</option>
+                                        <option value="pants">바지</option>
+                                        <option value="skirts">스커트</option>
+                                    </select>
+                                    <select id="sub_kind1" disabled>
+                                        <option value="">옷 종류</option>
+
+                                    </select>
+                                    <select id="sub_color1" disabled>
+                                        <option value="">색</option>
+                                        <option value="white">white</option>
+                                        <option value="red">red</option>
+                                        <option value="oragne">orange</option>
+                                        <option value="yellow">yellow</option>
+                                        <option value="green">green</option>
+                                        <option vlaue="blue">blue</option>
+                                        <option value="purplee">purple</option>
+                                        <option vlaue="black">black</option>
+                                        <option vlaue="voilet">violet</option>
+                                        <option value="brown">brown</option>
+                                        <option vlaue="azure">azure</option>
+                                        <option value="coral">coral</option>
+                                        <option value="gray">gray</option>
+                                        <option value="gole">gold</option>
+                                        <option vlaue="ivory">ivory</option>
+                                        <option value="kaki">khaki</option>
+                                        <option value="lime">lime</option>
+                                        <option value="navy">navy</option>
+                                        <option value="pink">pink</option>
+                                        <option value="silver">silver</option>
+                                        <option valeu="etc">etc</option>
+                                    </select>
+                                </div>
+                                <div id="select2" class="select">
+                                    <select class="kind">
+                                        <option value="">옷 분류</option>
+                                        <option value="top">상의</option>
+                                        <option value="outer">아우터</option>
+                                        <option value="onepiece">원피스</option>
+                                        <option value="pants">바지</option>
+                                        <option value="skirts">스커트</option>
+                                    </select>
+                                    <select id="sub_kind2" disabled>
+                                        <option value="">옷 종류</option>
+
+                                    </select>
+                                    <select id="sub_color2" disabled>
+                                        <option value="">색</option>
+                                        <option value="white">white</option>
+                                        <option value="red">red</option>
+                                        <option value="oragne">orange</option>
+                                        <option value="yellow">yellow</option>
+                                        <option value="green">green</option>
+                                        <option vlaue="blue">blue</option>
+                                        <option value="purplee">purple</option>
+                                        <option vlaue="black">black</option>
+                                        <option vlaue="voilet">violet</option>
+                                        <option value="brown">brown</option>
+                                        <option vlaue="azure">azure</option>
+                                        <option value="coral">coral</option>
+                                        <option value="gray">gray</option>
+                                        <option value="gole">gold</option>
+                                        <option vlaue="ivory">ivory</option>
+                                        <option value="kaki">khaki</option>
+                                        <option value="lime">lime</option>
+                                        <option value="navy">navy</option>
+                                        <option value="pink">pink</option>
+                                        <option value="silver">silver</option>
+                                        <option valeu="etc">etc</option>
+                                    </select>
+                                </div>
+                                <div id="select3" class="select">
+                                    <select class="kind">
+                                        <option value="">옷 분류</option>
+                                        <option value="top">상의</option>
+                                        <option value="outer">아우터</option>
+                                        <option value="onepiece">원피스</option>
+                                        <option value="pants">바지</option>
+                                        <option value="skirts">스커트</option>
+                                    </select>
+                                    <select id="sub_kind3" disabled>
+                                        <option value="">옷 종류</option>
+
+                                    </select>
+                                    <select id="sub_color3" disabled>
+                                        <option value="">색</option>
+                                        <option value="white">white</option>
+                                        <option value="red">red</option>
+                                        <option value="oragne">orange</option>
+                                        <option value="yellow">yellow</option>
+                                        <option value="green">green</option>
+                                        <option vlaue="blue">blue</option>
+                                        <option value="purplee">purple</option>
+                                        <option vlaue="black">black</option>
+                                        <option vlaue="voilet">violet</option>
+                                        <option value="brown">brown</option>
+                                        <option vlaue="azure">azure</option>
+                                        <option value="coral">coral</option>
+                                        <option value="gray">gray</option>
+                                        <option value="gole">gold</option>
+                                        <option vlaue="ivory">ivory</option>
+                                        <option value="kaki">khaki</option>
+                                        <option value="lime">lime</option>
+                                        <option value="navy">navy</option>
+                                        <option value="pink">pink</option>
+                                        <option value="silver">silver</option>
+                                        <option valeu="etc">etc</option>
+                                    </select>
+                                </div>
+                                               
+                                
+                            </div>
+                            <div class="selection bottom">
+                                  <strong>Tag</strong>                                
+                                   <div class="tag">
+                                    <select id="season1" class="season1" onchange="display(this)">
+                                        <option value="">계절1</option>
+                                        <option value="봄">봄</option>
+                                        <option value="여름">여름</option>
+                                        <option value="가을">가을</option>
+                                        <option value="겨울">겨울</option>
+                                    </select>
+
+                                    <select id="season2" class="season2">
+                                        <option value="">계절2</option>
+                                        <option value="봄">봄</option>
+                                        <option value="여름">여름</option>
+                                        <option value="가을">가을</option>
+                                        <option value="겨울">겨울</option>
+                                    </select>
+                                    <select id="situation1" class="situation1" onchange="display(this)">
+                                        <option value="">상황1</option>
+                                        <option value="데이트">데이트</option>
+                                        <option value="면접">면접</option>
+
+                                    </select>
+
+                                    <select id="situation2" class="situation2">
+                                        <option value="">상황2</option>
+                                        <option value="데이트">데이트</option>
+                                        <option value="면접">면접</option>
+                                    </select>
+
+                                    <select id="gender" class="season1">
+                                        <option value="">성별</option>
+                                        <option value="man">남자</option>
+                                        <option value="woman">여자</option>
+                                    </select>
+                                    <textarea id="memo" class="memo" placeholder="코디에 대해 자세하게 적어주세요"></textarea>
+                                </div></div>                                
+                        </form>
+                        <div id="vueUpload">
+                            <input type="submit" value="업로드" v-on:click="submit()">
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer id="footer">
+        <div id="footer_infor">
+            <div class="container">
+                <div class="row">
+                    <div class="footer_infor">
+                        <ul>
+                            <li><a href="#">홈페이지 이용약관</a></li>
+                            <li><a href="#">개인정보 취급방침</a></li>
+                            <li><a href="#">게시물 게재일칙</a></li>
+                        </ul>
+                        <p></p>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- 자바스크립트 라이브러리 -->
+    <script src="assets/js/jquery.min_1.12.4.js"></script>
+    <script src="assets/js/modernizr-custom.js"></script>
+    <script src="assets/js/ie-checker.js"></script>
+    <!-- 자바스크립트 코드-->
+    <script>
+        /*네비게이션 */
+        $('#sidebarCollapse').on('click', function() {
+            $('#sidebar').addClass('active');
+            $('.overlay').fadeIn();
+        });
+        $('.overlay').on('click', function() {
+            $('#sidebar').removeClass('active');
+            $('.overlay').fadeOut();
+        });
+        $('.closebtn').on('click', function() {
+            $('#sidebar').removeClass('active');
+            $('.overlay').fadeOut();
+        });
+        /*코디 업로드*/
+        $(function() {
+
+            $('.upload_preview').click(function(e) {
+
+                e.preventDefault();
+
+                $('.upload .input').click();
+
+            });
+
+        });
+        /*업로드 미리보기*/
+        var upload = document.querySelector('.input');
+        var preview = document.querySelector('.upload_preview_image');
+
+        /*설렉트 자동선택기*/
+        $('.kind').on("propertychange change keyup paste input", function() {
+            e = $(this)[0];
+            var kind_a = [
+                ["반팔셔츠", "반팔셔츠"],
+                ["긴팔셔츠", "긴팔셔츠"],
+                ["민소매셔츠", "민소매셔츠"],
+                ["셔츠/블라우스", "셔츠/블라우스"],
+                ["피케/카라티셔츠", "피케/카라티셔츠"],
+                ["맨투맨/스웨트셔츠", "맨투맨/스웨트셔츠"],
+                ["후드", "후드"],
+                ["니트/스웨터/가디건", "니트/스웨터/가디건"],
+                ["베스트", "베스트"],
+                ["기타", "기타"]
+            ];
+            var kind_b = [
+                ["블루종/MA-1", "블루종/MA-1"],
+                ["레더/라이더스재킷", "레더/라이더스재킷"],
+                ["트러커재킷", "트러커재킷"],
+                ["슈트/블레이져", "슈트/블레이져"],
+                ["나이론/코치/아노락", "나이론/코치/아노락"],
+                ["트레이닝재킷", "트레이닝재킷"],
+                ["스타디움재킷", "스타디움재킷"],
+                ["환절기코트", "환절기코트"],
+                ["겨울싱글코트", "겨울싱글코트"],
+                ["겨울기타코트", "겨울기타코트"],
+                ["롱패딩", "롱패딩"],
+                ["숏패딩", "숏패딩"],
+                ["패딩베스트", "패딩베스트"],
+                ["기타", "기타"]
+            ];
+            var kind_c = [
+                ["미니원피스", "미니원피스"],
+                ["미디원피스", "미디원피스"],
+                ["맥심원피스", "맥심원피스"],
+                ["점프수트", "점프수트"]
+            ];
+            var kind_d = [
+                ["데님바지", "데님바지"],
+                ["코튼바지", "코튼바지"],
+                ["수트 팬츠/슬랙스", "수트 팬츠/슬랙스"],
+                ["트레이닝바지", "트레이닝바지"],
+                ["반바지", "반바지"],
+                ["레깅스", "레깅스"],
+                ["기타", "기타"]
+            ];
+            var kind_e = [
+                ["미니스커트", "미니스커트"],
+                ["미디스커트", "미디스커트"],
+                ["롱스커트", "롱스커트"]
+            ];
+            var kind_f = [
+                ['', "옷 종류"]
+            ];
+            var target = e.nextElementSibling;
+            if (e.value == "top") var d = kind_a;
+            else if (e.value == "outer") var d = kind_b;
+            else if (e.value == "onepiece") var d = kind_c;
+            else if (e.value == "pants") var d = kind_d;
+            else if (e.value == "skirts") var d = kind_e;
+            else if (e.value == "") var d = kind_f;
+
+            if (d[0][0] == "") {
+                target.disabled = true;
+                var color = $(this).next()[0].nextElementSibling;
+                $(this).next().next().find('option:first').attr('selected','selected');
+                color.disabled = true;
+                
+
+            } else {
+                target.disabled = false;
+                $(this).next()[0].nextElementSibling.disabled = false;
+            }
+            target.options.length = 0;
+            for (x in d) {
+                var opt = document.createElement("option");
+                opt.value = d[x][0];
+                opt.innerHTML = d[x][1];
+                target.appendChild(opt);
+            }
+        });
+        function display(e){
+            var target = e.nextElementSibling;
+            if (e.value !=""){
+               target.style.display="inline-block";
+            }
+        };
+
+/* 통합 JS 코드 */
+
+
+//파라미터값을 가져옵니다 id = ?    
+function getUrlParams() {
+    let params = {};
+    window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) { params[key] = value; });
+    return params;
+}
+
+
+
+let vue = new Vue({
+el : "#vue",
+mounted:function() {
+ this.onload();                
+},
+data : { 
+    
+},
+methods : {
+    onload : function() {
+        axios.post('http://pickclothes.iptime.org/node/login/check').then(response => {
+            console.log(response.data);
+            let params =getUrlParams();
+            let coordi_id = params.coordi_id;
+            axios.post('http://pickclothes.iptime.org/node/coordi_func/modify_view', {coordi_id : coordi_id}).then(response => {
+                console.log(response.data);
+                if(response.data === 0) {
+                    alert('권한이 없습니다.');
+                    history.go(-1);
+                }
+                    
+                $('#sub_kind1').val(response.data[0].item1);
+                $('#sub_color1').val(response.data[0].color1);
+                $('#sub_kind2').val(response.data[0].item2);
+                $('#sub_color2').val(response.data[0].color2);
+                $('#sub_kind3').val(response.data[0].item3);
+                $('#sub_color3').val(response.data[0].color3);
+                $('#season1').val(response.data[0].season1);
+                $('#season2').val(response.data[0].season2);
+                $('#situation1').val(response.data[0].situation1);
+                $('#situation2').val(response.data[0].situation2);
+                $('#gender').val(response.data[0].gender);
+                $('#memo').val(response.data[0].memo);
+
+                console.log(response.data[0].file)
+                let file = response.data[0].file;
+                console.log(file)
+
+                $('#img_mod').attr('src', 'http://pickclothes.iptime.org:3000/coordi/' + file );
+            });
+
+            if(response.data.nick_name != undefined) {
+                document.getElementById('hellonick').innerText = response.data.nick_name + ' 님 환영합니다'
+
+                let login = document.getElementById('login');
+                login.style.display = 'none';
+
+                let login_session = document.getElementById('login_session');
+                login_session.style.display = 'block';
+
+                let profile = document.getElementById('logprofile');
+                profile.style.display = 'block';
+                $('#href_profile').attr('href', '/profile/?id=' + response.data.user_id);
+    
+            } else {
+                alert('권한이 없습니다');
+                history.go(-1);
+            }
+        }).catch(error => {            
+            alert('권한이 없습니다');
+            history.go(-1);
+        });                
+    },
+}
+});
+
+    
+function logout() {
+
+if(confirm('로그아웃 하시겠습니까?')) {
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.open('POST', 'http://pickclothes.iptime.org/node/login/logout');
+    xhr.send();
+    xhr.addEventListener('load', function() {
+                console.log(xhr.response);
+    });
+
+
+    let login = document.getElementById('login');
+    login.style.display = 'block';
+
+    let login_session = document.getElementById('login_session');
+    login_session.style.display = 'none';
+
+    let profile = document.getElementById('logprofile');
+    profile.style.display = 'none';
+
+    window.location.reload()              
+  }  
+}
+
+//safari 브라우저 문제 해결..
+
+window.onpageshow = function(event) {
+    if(event.persisted == true) {
+        window.location.reload()
+    } else {}
+}
+
+
+let uploadVue = new Vue({
+    el:"#vueUpload",
+    data : {
+        
+    },
+    methods : {
+        submit : function() {
+            
+
+            let item1 = $('#sub_kind1').val();
+            let color1 = $('#sub_color1').val();
+            let item2 = $('#sub_kind2').val();
+            let color2 = $('#sub_color2').val();
+            let item3 = $('#sub_kind3').val();
+            let color3 = $('#sub_color3').val();
+            let season1 = $('#season1').val();
+            let season2 = $('#season2').val();
+            let situation1 = $('#situation1').val();
+            let situation2 = $('#situation2').val();
+            let gender = $('#gender').val();
+            let memo = $('#memo').val();
+
+            console.log(gender);
+            
+
+            let formData = new FormData();            
+            let param = getUrlParams();
+
+            let params = {
+                'situation1': situation1,
+                'situation2': situation2,
+                'color1': color1,
+                'color2': color2,
+                'color3': color3,            
+                'season1': season1,
+                'season2': season2,
+                'item1': item1,
+                'item2': item2,
+                'item3': item3,
+                'gender': gender,
+                'memo': memo,
+                'coordi_id': param.coordi_id,
+            };
+       
+            
+            let bool = confirm('수정 하시겠습니까?');
+            if(bool === true) {
+                axios.post('http://pickclothes.iptime.org/node/coordi_func/modify', params).then(response => {
+                    
+                    if(response.data === 1) {
+                        alert('수정에 성공하였습니다!');
+                        location.href = "../coordi";
+                    } else {
+                        alert('수정 실패. 정보를 확인해 주세요');
+                    }
+                });
+            }
+
+        }
+    },
+
+});
+
+
+
+
+    </script>
+
+</body>
+
+</html>

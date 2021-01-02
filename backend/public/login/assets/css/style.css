@@ -1,0 +1,452 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: 'BMJUA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+#header {
+    width: 100%;
+    background: rgba(0, 0, 0, 0);
+}
+
+.container {
+    position: relative;
+    width: 1280px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0);
+}
+
+.row {
+    padding: 0 10px;
+}
+
+#footer {
+    background-color: rgba(238, 238, 238, 255);
+    width: 100%;
+}
+
+/*헤더 영역 */
+.header {
+    margin-top: 10px;
+}
+
+
+.header h1 img {
+    width: 62px;
+    cursor: pointer;
+}
+
+.header .logo {
+    height: 58px;
+    display: inline-block;
+    margin: 3px 10px;
+    overflow: hidden;
+}
+
+.header .logo strong {
+    line-height: normal;
+    font-size: 42px;
+    color: #3381e8;
+    font-family: "BMJUA";
+    font-weight: normal;
+}
+
+.header .logo em {
+    line-height: normal;
+    display: block;
+    font-size: 10px;
+    color: #94b8f3;
+    font-family: "Gungsuh", "궁서";
+}
+/*로그인 회원가입 버튼*/
+.login{
+    position: absolute;
+    right:250px;
+    bottom:8px;
+}
+.login a{
+    margin-right: 10px;
+    font-size:13px;
+}
+/*검색 시작*/
+.search__input {
+    width: 170px;
+    height: 19px;
+    border: 0;
+    padding: 5px 0px;
+    outline: 0;
+    background-color: transparent;
+    font-size: 14px;
+    color: black;
+}
+
+.search__btn {
+    height: 20px;
+    width: 21px;
+    font-size: 14px;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-position: 95% center;
+}
+
+.search {
+    overflow: hidden;
+    position: absolute;
+    bottom: 4px;
+    right: 10px;
+    width: 200px;
+    height: 19px;
+    padding: 5px 11px;
+    background-color: #5b5b5b;
+    transition: transform 250ms ease-in-out;
+    line-height: 18px;
+    color: #575756;
+    background-color: #5b5b5b;
+    border-radius: 50px;
+    border: 1px solid #575756;
+    transition: all 250ms ease-in-out;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+.search__input:placeholder {
+    color: color(white a(0.8));
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.search__btn:hover {
+    cursor: pointer;
+}
+
+.search:hover,
+.search:focus-within {
+    padding: 5px 0;
+    outline: 0;
+    border: 1px solid transparent;
+    border-bottom: 1px solid #575756;
+    border-radius: 0;
+    background-position: 100% center;
+    background-color: transparent;
+    text-decoration-color: black;
+}
+
+/*검색 끝*/
+/*카테고리 네비*/
+/* The side navigation menu */
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    display: none;
+}
+
+.sidenav {
+    height: 100%;
+    /* 100% Full-height */
+    width: 250px;
+    position: fixed;
+    /* Stay in place */
+    z-index: 999;
+    /* Stay on top */
+    top: 0;
+    /* Stay at the top */
+    left: -250px;
+    background-color: #111;
+    /* Black*/
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding-top: 60px;
+    /* Place content 60px from the top */
+    transition: 0.5s;
+    /* 0.5 second transition effect to slide in the sidenav */
+}
+
+#sidebar.active {
+    left: 0;
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+    display: none;
+}
+
+/*카테고리 네비 끝*/
+/*소제목*/
+
+.middlename {
+    color: #666;
+    font-size: 22px;
+    margin-top: 8px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    border-top: 1px solid rgb(238, 238, 238);
+    border-bottom: 1px solid rgb(238, 238, 238);
+    padding: 10px 0px 6px 50px;
+    text-shadow: none;
+}
+
+/*로그인 영역*/
+#loginArea{
+    margin: 40px 0 60px  0;
+}
+.search{
+    box-sizing: content-box;
+}
+*{
+    box-sizing: border-box;
+}
+.table:before,.table:after{
+    display: table;
+    content: " ";
+}
+.loginArea{
+    margin-left: 30%;
+    width:40%;
+}
+.reg-page{
+    color:#555;
+    padding:30px;
+    background: #fefefe;
+    border: 1px solid #eee;
+    box-shadow: 0 0 3px #eee;
+}
+.reg-header{
+    color: #555;
+    text-align: center;
+    margin: 35px;
+    border-bottom: solid 1px #eee;
+}
+.reg-header h2{
+    font-size:24px;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    text-shadow: none;
+    font-weight: normal;
+    color: #585f69;
+}
+.input-group{
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    margin-bottom: 20px;
+    clear:both;
+}
+.input-group-addon, .input-group-btn, .input-group .form-control {
+    display: table-cell;
+}
+.input-group-addon:first-child{
+    border-right: 0;
+}
+.input-group-addon{
+    color: #b3b3b3;
+    font-size: 14px;
+    background: #fff;
+    padding:6px 12px;
+    font-weight: 400;
+    line-height: 1;
+    text-align: center;
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid #ccc;
+}
+.input-group .form-control{
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 100%;
+    margin-bottom: 0;
+    
+}
+.form-control{
+    box-shadow: none;
+    height: 34px;
+    padding: 6px 12px;
+    font-size:14px;
+    color:#555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+.row1{
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.row1:before, .row1:after{
+    display: table;
+    content: " ";
+}
+.row1:after{
+    clear: both;
+}
+.checkbox{
+    position: relative;
+    display: block;
+    min-height: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
+.reg-page label{
+    color: #777;
+}
+.checkbox label{
+    padding-left: 20px;
+    margin-bottom: 0;
+    font-weight: 400;
+    cursor: pointer;
+}
+.checkbox input[type=checkbox]{
+    position: absolute;
+    margin-left: -20px;
+}
+input[type=checkbox]{
+    margin: 4px 0 0;
+    line-height: normal;
+    box-sizing: border-box;
+    padding: 0;
+    line-height: normal;
+}
+label{
+    max-width: 100%;
+    display: inline-block;
+}
+.col-md-6{
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 50%;
+    float: left;
+    position: relative;
+}
+.btn-u{
+    background: #0076C0;
+    border: 0;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 400;
+    padding: 6px 13px;
+    position: relative;
+    white-space: nowrap;
+    display: inline-block;
+    text-decoration: none;
+}
+.pull-right{
+    float: right!important;
+}
+.loginArea hr{
+    margin:30px 0;
+    border: 0;
+    border-top:1px solid #eee;
+    height: 0;
+}
+.loginArea p{
+    color:#555;
+    margin: 0 0 10px;
+    
+}
+.color-green{
+    color:#0076C0;
+}
+.color-green:hover{
+    text-decoration: underline;
+}
+/*푸터*/
+.footer_infor {
+    text-align: center;
+}
+
+.footer_infor ul {
+    padding: 15px 0;
+}
+
+.footer_infor li {
+    position: relative;
+    display: inline;
+    padding-right: 16px;
+    white-space: nowrap;
+}
+
+.footer_infor li:after {
+    content: '';
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 1px;
+    height: 11px;
+    background: black;
+}
+
+.footer_infor li:last-child:after {
+    width: 0;
+    height: 0;
+}
+.footer_bg{
+    background-color: rgba(238, 238, 238, 255);
+}
+/*반응형 디자인*/
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media (max-width: 1290px) {
+    .container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .container {
+        width: 1280px;
+    }
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}

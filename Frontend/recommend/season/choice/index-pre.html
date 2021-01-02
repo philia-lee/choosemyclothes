@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+    
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"> <!-- 모니터 크기에 따른 웹페이지의 크기-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> <!-- edge 표준모드-->
+    <!-- HTLM5shiv ie6~8 -->
+    <!--[if lt IE 9]> 
+      <script src="assets/js/html5shiv.min.js"></script>
+      <script type="text/javascript">
+         alert("현재 브라우저는 지원하지 않습니다. 크롬 브라우저를 추천합니다.!");
+      </script>
+   <![endif]-->
+    <title>옷좀골라줄래</title>
+    <!-- 스타일 시트-->
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    
+    <!-- vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+
+</head>
+
+<body>
+   <div id="load"></div>
+   <div class="overlay">
+       
+   </div>
+    <header id="header">
+        <div class="container">
+            <div class="row">
+                <div class="header clearfix">
+                    <h1>
+                        <span id="sidebarCollapse">
+                            <img src="assets/img/btn_category.png" alt="카테고리">
+                        </span>
+                        <em class="logo">
+                            <a href='../../../'>
+                                <strong>옷 좀 골라줄래?</strong>
+                                <em>
+                                    Can you pick some clothes?
+                                </em>
+
+                            </a>
+                        </em>
+                    </h1>
+                    <div class="login" id="login">
+                        <a href="../../../login/">로그인</a>
+                        <a href="../../../signup/">회원가입</a>
+                    </div>
+                    <div class="login_after login_session" id="login_session">
+                        <ul>
+                            <li id='hellonick'>?? 환영합니다</li>
+                            <li><a href="#">정보수정</a></li>
+                            <li><a href="#" onclick="logout()">로그아웃</a></li>
+                        </ul>
+                    </div>
+                    <div class="search" id="sc">
+                        <input class="search__input" type="text" placeholder="Search">
+                        <input class="search__btn" type="button">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="sidebar" class="sidenav">
+            <a class="closebtn">&times;</a>
+            <a href="../../../coordi/">코디 Photo</a>
+            <a href="../../../worldcup/">이상형 월드컵</a>
+            <a href="../../../recommend/">코디 추천</a>
+            <div class="login_session" id='logprofile'>
+                <a href="../../../upload/">코디 업로드</a>
+                <a id="href_profile">프로필</a></div>
+            <a href="#">Contact</a>
+        </div>
+    </header>
+    <section id="banner1">
+        <div class="container">
+            <div class="row">
+                <img src="assets/img/banner.png">
+            </div>
+        </div>
+    </section>
+    <section id="codi">
+        <div class="container" id="vue">
+            <div class="row">
+                <div class="sub_title">
+                    <h1 id="sub_season">추천 코디 > 날씨별 </h1>
+                </div>
+                <div class="array">
+                    <ul>
+                        <li>최신순</li>
+                        <li>오래된순</li>
+                    </ul>
+                </div>      
+                <div class="photo clearfix">
+                    <ul>
+                    <li v-for="coordi in coordis" class="item" v-on:click="detail(coordi.coordi_id)">
+                        <img :src="coordi.file"></a>
+                    </li>
+                </ul>
+                </div>
+            </div>
+            <hr id = "choice">
+        </div>
+    </section>
+
+    <aside id="modal" class="modal">
+        <a id="hideview" class="closebtn">&times;</a>
+        <div class="infor clearfix">
+            <div class="img">
+                <img src="#">
+                <em class="name">
+                    <a href="#" id="detail_href">
+                        <strong id="detail_nick_name">
+                            Banana
+                        </strong>
+                        <em id="detail_email">
+                            (IwantNS@Gmail.com)
+                        </em>
+                    </a>
+                </em>
+
+            </div>
+
+            <div class="tag">
+                <img src="assets/img/tag.jpg">
+                <div class="tag_infor">
+                    <em id="detail_tag">상의 여름 나들이 진갈색</em>
+                </div>
+            </div>
+            <div class="btn report"><em>신고</em></div>
+            <div class="btn erase"><em>삭제</em></div>
+            <div class="btn rewrite"><em>수정</em></div>
+        </div>
+    </aside>
+    
+    <footer id="footer">
+        <div id="footer_infor">
+            <div class="container">
+                <div class="row">
+                    <div class="footer_infor">
+                        <ul>
+                            <li><a href="#">홈페이지 이용약관</a></li>
+                            <li><a href="#">개인정보 취급방침</a></li>
+                            <li><a href="#">게시물 게재일칙</a></li>
+                        </ul>
+                        <p></p>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- 자바스크립트 라이브러리 -->
+    <script src="assets/js/jquery.min_1.12.4.js"></script>
+    <script src="assets/js/modernizr-custom.js"></script>
+    <script src="assets/js/ie-checker.js"></script>
+    <script src="assets//js/viwer.js"></script>
+    <!-- 자바스크립트 코드-->
+    <script>
+/* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
+/* Set the width of the side navigation to 250px */
+$('#sidebarCollapse').on('click', function () {
+    $('#sidebar').addClass('active');
+    $('.overlay').fadeIn();
+});
+
+$('.overlay').on('click', function () {
+    $('#sidebar').removeClass('active');
+    $('.overlay').fadeOut();
+});
+
+$('.closebtn').on('click', function () {
+    $('#sidebar').removeClass('active');
+    $('.overlay').fadeOut();
+});
+
+
+
+//파라미터값을 가져옵니다 id = ?    
+function getUrlParams() {
+    let params = {};
+    window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) { params[key] = value; });
+    return params;
+}
+
+
+/*
+vuejs
+*/
+
+//불러올때
+let load = new Vue({
+    el: "#load",
+    mounted : function() {
+        this.onload();
+
+    },
+    data : {
+
+
+    },
+    methods : {
+        onload : function() {
+                axios.post('http://124.153.233.204:3333/node/login/check').then(response => {
+                    console.log(response.data);
+                    if(response.data.nick_name != undefined) {
+                        document.getElementById('hellonick').innerText = response.data.nick_name + ' 님 환영합니다'
+
+                        let login = document.getElementById('login');
+                        login.style.display = 'none';
+
+                        let login_session = document.getElementById('login_session');
+                        login_session.style.display = 'block';
+
+                        let profile = document.getElementById('logprofile');
+                        profile.style.display = 'block';
+                        
+                        $('#href_profile').attr('href', '../../../profile/?id=' + response.data.user_id);
+
+                    }
+                });
+        },
+    }
+});
+
+let vue = new Vue({
+    el: "#vue",
+    mounted : function() {
+        this.onload();
+    },
+    data : {
+        num : 1,
+        coordis : '',
+
+        //상세보기 할때 보여줄것들
+        user_id : 0,
+        file : '',
+        nick_name : '',
+        email : '',
+        tag : '',       
+    },
+    methods : {
+        onload : function() {
+            
+            let season = this.switchKor()
+            axios.post('http://124.153.233.204:3333/node/recommend/season', {num : this.num, season : season}).then(response => {
+                    this.coordis = response.data;
+
+                    for(let i = 0 ; i < this.coordis.length; i++) {
+                        this.coordis[i].file = 'http://124.153.233.204:3000/coordi/' + this.coordis[i].file;
+                    }                   
+                });
+        },
+        switchKor : function() {
+            let params = getUrlParams();
+            switch(params.season) {
+                case 'spring' : document.getElementById("sub_season").innerText = "추천 코디 > 날씨별 > 봄"; return '봄'; break;
+                case 'summer' : document.getElementById("sub_season").innerText = "추천 코디 > 날씨별 > 여름"; return '여름'; break;
+                case 'fall' : document.getElementById("sub_season").innerText = "추천 코디 > 날씨별 > 가을"; return '가을'; break;
+                case 'winter' : document.getElementById("sub_season").innerText = "추천 코디 > 날씨별 > 겨울"; return '겨울'; break;
+                default : return '에러'; break ;
+            }
+        },
+        detail : function(coordi) {
+            let coordi_id = coordi;
+            axios.post('http://124.153.233.204:3000/coordi_func/detail_view', {coordi_id : coordi_id}).then(response => {
+                console.log(response.data);
+                this.user_id = response.data[0].user_id;
+                this.file = 'http://124.153.233.204:3000/coordi/' + response.data[0].file;
+                this.nick_name = response.data[0].nick_name;
+                this.email = '(' + response.data[0].email + ')';
+                this.tag = '';
+
+
+                //태그 입력
+                this.tag = this.tag + response.data[0].item1;
+                this.tag = this.tag + ' ' + response.data[0].item2;
+                this.tag = this.tag + ' ' + response.data[0].item3;
+                this.tag = this.tag + ' ' + response.data[0].season1;
+                this.tag = this.tag + ' ' + response.data[0].season2;
+                this.tag = this.tag + ' ' + response.data[0].situation1;
+                this.tag = this.tag + ' ' + response.data[0].situation2;
+                this.tag = this.tag + ' ' + response.data[0].color1;
+                this.tag = this.tag + ' ' + response.data[0].color2;
+
+                $('#detail_href').prop('href', 'http://124.153.233.204:3333/profile/index.html?id=' + this.user_id)
+                document.getElementById('detail_nick_name').innerText = this.nick_name;
+                document.getElementById('detail_email').innerText = this.email;
+                document.getElementById('detail_tag').innerText = this.tag;
+            });                            
+        }
+    }
+});
+
+
+
+function logout() {
+
+if(confirm('로그아웃 하시겠습니까?')) {
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.open('POST', 'http://124.153.233.204:3333/node/login/logout');
+    xhr.send();
+    xhr.addEventListener('load', function() {
+                console.log(xhr.response);
+    });
+
+
+    let login = document.getElementById('login');
+    login.style.display = 'block';
+
+    let login_session = document.getElementById('login_session');
+    login_session.style.display = 'none';
+
+    let profile = document.getElementById('logprofile');
+    profile.style.display = 'none';
+
+    window.location.reload()              
+  }  
+}
+
+
+    </script>
+</body></html>

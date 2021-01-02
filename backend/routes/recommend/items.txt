@@ -1,0 +1,78 @@
+
+상의
+( 'short-sleeved shirt', '반팔 셔츠', 1 ); 			        1
+( 'long-sleeve shirt', '긴팔 셔츠', 1 ); 			        2 
+( 'sleeveless shirt', '민소매 셔츠', 1 ); 			        3	 
+( 'shirt/blouse' , '셔츠/블라우스', 1 ); 			        4
+( 'pique/collar' , '피케/카라 티셔츠', 1 );			        5
+( 'sweat shirts' , '맨투맨/스웨트 셔츠', 1 ); 		        6
+( 'hood' , '후드', 1 ); 				                   7
+( 'knit / sweater / cardigan' , '니트/스웨터/가디건', 1 ); 	8
+( 'vest' , '베스트', 1 ); 					               9
+( 'etc' , '기타', 1 );						               10
+
+아우터
+( 'blouson/MA-1' , '블루종/MA-1', 2 ); 				       11
+( 'leather/rider jacket' , '레더/라이더스 재킷', 2 ); 		12
+( 'trucker jacket' , '트러커 재킷', 2 ); 			        13
+( 'suit/blazer' , '수트/블레이저', 2 );  			        14
+( 'nylon/coach/anorak' , '나이론/코치/아노락', 2 ); 		15
+( 'training jacket' , '트레이닝 재킷', 2 ); 			16
+( 'stadium jacket' , '스타디움 재킷', 2 ); 			17
+( 'changing season coat' , '환절기 코트', 2 );			18
+( 'winter single coat' , '겨울 싱글 코트', 2 );			19
+( 'winter coat etc' , '겨울 기타 코트', 2 ); 			20
+( 'long padded jacket' , '롱 패딩', 2 ); 			21
+( 'short padded jacket' , '숏 패딩', 2 ); 			22
+( 'padded vest' , '패딩 베스트', 2 ); 				23
+( 'etc' , '기타 아우터', 2 ); 					24
+ 
+원피스
+( 'mini onepiece' , '미니 원피스', 3 ); 			25
+( 'midi onepiece' , '미디 원피스', 3 ); 			26
+( 'mexim onepiece' , '맥심 원피스', 3 );			27
+( 'jumpsuit' , '점프수트', 3 ); 				28
+
+바지
+( 'denim pants' , '데님 팬츠', 4 ); 				29
+( 'cotton pants' , '코튼 팬츠', 4 ); 				30
+( 'suit pants/slex' , '수트 팬츠/ 슬랙스', 4 ); 		31
+( 'training pants' , '트레이닝 팬츠', 4 ); 			32
+( 'short pants' , '숏 팬츠', 4 ); 				33
+( 'leggings' , '레깅스', 4 ); 					34
+( 'etc' , '기타 바지', 4 ); 					35
+
+스커트
+( 'mini skirt' , '미니 스커트', 5 ); 				36
+( 'midi skirt' , '미디 스커트', 5 ); 				37 
+( 'long skirt' , '롱 스커트', 5 );				38
+
+
+
+계절
+
+('spring');
+('summber');
+('autumn');
+('winter');
+
+('white');
+('red');
+('orange');
+('yellow');
+('green');
+('blue');
+('purple');
+('black');
+('violet');
+('brown');
+('azure');
+('coral');
+('gray');
+('gold');
+('ivory');
+('khaki');
+('lime');
+('navy');
+('pink');
+('silver');
